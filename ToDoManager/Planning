@@ -1,19 +1,19 @@
 So this project will have following features and for very feature there 
-will be a module to peform it, Features -
+will be a module to perform it, Features -
 
 1. Add task
 2. Remove task
 3. Points - For completing a task - +10 points
         - For skipping the task - -5 points
         - For not completing the task before deadline - -8 points
-4. History saving of user on how he is peforming
+4. History saving of user on how he is performing
 5. Time_Manager - As we will be needing to run the time in background and will
                 inform user again and again by opening terminal  and  printing 
                 for the information for reminding  the  user. And we will also 
                 save and calculate epoch as  if user  turn off the device then 
-                later also when he will open it we will be able to remeind user.
+                later also when he will open it we will be able to remind user.
 
-Miscelleneos Things -
+Miscellaneous Things (Add Task) -
 
 1. We will save the data in json file
 2. Only one main json file for all data will be there
@@ -26,3 +26,10 @@ Miscelleneos Things -
                 Undone and skipped tasks
                 
 4. Json file name would be "data.json"
+
+Miscellaneous Things (Remove Task) -
+
+1. The module will allow user to delete a task
+2. Thing to be kept in mind is that whenever this
+module will be used some points will be  deducted
+or some update will be in it.
