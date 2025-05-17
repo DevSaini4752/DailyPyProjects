@@ -1,0 +1,36 @@
+"""The module would be there for a function which will be called
+every time the  project is started, and it will check the status
+that which task's deadline is crossed whose deadline is near. If
+the  deadline is  near, then  it  will  warn the  user. May this
+initializer would be called many times depending on the situation."""
+
+#Importing modules
+import pointmanager
+import json
+import time
+import taskremover
+import colours as c
+
+#Fucntion
+def initializer():
+    try:
+        with open("data.json", "r") as file:
+            data = json.load(file)
+
+        for key in data.keys():
+            if key == "total_points" or key == "PoiHis" or key == "Task Name":
+                pass
+
+            else:
+                value = data[key]
+                value = value[1]
+
+                if value < time.time():
+                    pointmanager.point_manger(-6, "Crossing the Deadline")
+                    taskremover.tskrem(key)
+
+    except Exception as ex:
+        return print(f"""{c.red}Unexpected Error occurred - {ex}""")
+
+if __name__ == "__main__":
+    initializer()
