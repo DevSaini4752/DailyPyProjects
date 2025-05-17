@@ -1,4 +1,4 @@
-So this project will have following features and for very feature there 
+So this project will have following features and for very feature there
 will be a module to perform it, Features -
 
 1. Add task
@@ -33,3 +33,31 @@ Miscellaneous Things (Remove Task) -
 2. Thing to be kept in mind is that whenever this
 module will be used some points will be  deducted
 or some update will be in it.
+
+# Here discussion on point system will be there
+Points system -
++ve -
+    Initializing task = +2
+    Completing the task = +8
+    total points for one task = +10
+
+-ve -
+    Cancelling a task = -4
+    Crossing the deadline = -6
+    # More points will be deducted if user crosses
+    the deadline as if  user cancels the task then
+    he has admitted his mistake but not in deadline.
+
+No deduct in points -
+    If user cancels a task in less then 2 mins then
+    no points  will be  deducted but  if it exceeds
+    2 mins then the case would be taken as normal &
+    4 points would be deducted.
+
+Important Note -
+    A module would be there for a function which will be called every
+    time the  project is started and it will  check the  status  that
+    which  task's deadline is crossed whose deadline is near. If  the
+    deadline is near then it will warn the user.
+
+    The name of the module will be "initializer".
