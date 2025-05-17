@@ -16,7 +16,7 @@ def tskrem(*tasks):
 
         #Updating the data in data,json
         with open("data.json", "w") as file_out:
-            json.dump(data, file_out)
+            json.dump(data, file_out, indent=4)
 
     # Just to don't raise error during an empty file
     except json.JSONDecodeError:
@@ -32,4 +32,4 @@ def tskrem(*tasks):
         print(msg)
 
 if __name__ == "__main__":
-    tskrem("Shishipanda", "Jerry")
+    tskrem("Chy", "Doggo")
