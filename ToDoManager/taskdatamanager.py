@@ -6,7 +6,8 @@ accordingly"""
 import json
 
 # Function
-def mtd(task):
+# mtd -> Manage task and data
+def mtd(**tasks):
     data = {}
     try:
         with open("data.json", "r") as file_op:
@@ -22,11 +23,13 @@ def mtd(task):
     # an exception is there in try  then it would  end
     # after  that  execution, and  this  operation  is
     # compulsory to be executed
-    data.update(task)
+    for tskkey, tskval in tasks.items():
+        data[tskkey] = tskval
+
 
     with open("data.json", "w") as file_wr:
         json.dump(data, file_wr, indent=4)
 
 if __name__ == "__main__":
-    mtd({"Trial" : "Ignore"})
+    mtd(Jerry = "Software engineer", Shishipanda="Jee", )
 
