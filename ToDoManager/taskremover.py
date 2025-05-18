@@ -4,6 +4,9 @@ to remove a task from the task list (data.json)"""
 #Importing Modules
 import json
 import colours as c
+import pointmanager
+import time
+import datetime
 
 # Function
 def tskrem(*tasks):
@@ -12,10 +15,24 @@ def tskrem(*tasks):
             data = json.load(file_in)
             # Will remove the task given
             for task in tasks:
+
+                # Updating points
+                timeoftask = (data[task])[2]
+                if (time.time() - timeoftask) > 120:
+                    pointmanager.point_manger(-6, "Cancellation")
+                else:
+                    print(f"{c.red}No points deducted as you deleted the task in less then 2 mins{c.end}")
+
+                    # Updating history
+                    poihis = data["PoiHis"]
+                    poihis[f"{datetime.datetime.now()}"] = [0, "Canceled in less then 2 mins"]
+
+                # Deleting the task
                 del data[task]
 
         #Updating the data in data,json
         with open("data.json", "w") as file_out:
+
             json.dump(data, file_out, indent=4)
 
     # Just to don't raise error during an empty file

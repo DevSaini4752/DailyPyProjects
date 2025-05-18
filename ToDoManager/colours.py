@@ -22,6 +22,14 @@ light_purple = "\033[1;35m"
 light_cyan   = "\033[1;36m"
 light_white  = "\033[1;37m"
 
+#------------------Some New colors------------------
+Orange = "\033[38;5;208m"
+Electric_Blue = "\033[38;5;45m"
+Mint_Green = "\033[38;5;48m"
+Hot_Pink = "\033[38;5;198m"
+
+
+
 # ───────────── Extended 256-color codes ─────────────
 # pink was 206; here are a few more shades:
 pink         = "\033[38;5;206m"

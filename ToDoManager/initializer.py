@@ -28,6 +28,7 @@ def initializer():
                 if value < time.time():
                     pointmanager.point_manger(-6, "Crossing the Deadline")
                     taskremover.tskrem(key)
+                    print(f"{c.red}Warning!!! - You crossed a task's({key}) deadline so 6 points has been deducted{c.end}")
 
     except Exception as ex:
         return print(f"""{c.red}Unexpected Error occurred - {ex}""")

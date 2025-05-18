@@ -5,6 +5,8 @@ accordingly"""
 #Importing Modules
 import json
 import colours as c
+import time
+import pointmanager
 
 # Function
 # mtd -> Manage task and data
@@ -27,12 +29,20 @@ def mtd(hours=True, **tasks):
     # compulsory to be executed
     try:
         for tskkey, tskval in tasks.items():
-            tskval[1] = int(tskval[1])
+
+            tskval[1] = float(tskval[1])
+
             if hours:
                 tskval[1] *= 3600
+                tskval[1] += time.time()
             else:
                 tskval[1] *= 3600 * 24
+                tskval[1] += time.time()
+
+            data[tskkey] = tskval.append(time.time())
             data[tskkey] = tskval
+
+            pointmanager.point_manger(2, "Initializing")
 
     except IndexError as IE:
         msg = f"{c.red}{IE} - Kindly enter Deadline also in Hrs or Days, System failed to got the Deadline!!!{c.end}"

@@ -29,12 +29,12 @@ def point_manger(points, purpose):
             json.dump(data, file, indent =4)
 
     except Exception as ex:
-        msg = (f"{c.red}Unexpected error occured -"
+        msg = (f"{c.red}Unexpected error occurred -"
                f"{ex}{c.end}")
         return msg
 
 
 if __name__ == "__main__":
     func = point_manger(2, "Initializing")
-    if not func == None:
+    if not func is None:
         print(func)
