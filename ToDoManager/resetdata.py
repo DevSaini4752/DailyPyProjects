@@ -1,4 +1,4 @@
-"""This will be used to reset all of the data in data.json"""
+"""This will be used to reset all the data in data.json"""
 
 #Importing modules
 import json

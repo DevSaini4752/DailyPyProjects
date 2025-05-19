@@ -78,3 +78,14 @@ Important Note -
     would be called many times depending on the situation.
 
     The name of the module will be "initializer".
+
+Reset module -
+A module ahs been made and this will allow user to reset all of his data.
+
+Debugged -
+A bug was there, which was causing not to update the points in data
+sector and now it is fixed.
+
+Handled exceptions -
+Many more exceptions were there which I have handled so there is minimum
+chance of any error.

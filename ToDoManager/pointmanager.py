@@ -18,13 +18,17 @@ import colours as c
 # Function for the purpose
 def point_manger(points, purpose):
     try:
+        #Will allow saving time of initializing the task in history
         live_time = datetime.datetime.now()
+
+        #Updating data
         with open("data.json", "r") as file:
             data = json.load(file)
             data["total_points"] += points
             history = data["PoiHis"]
             history[f"{live_time}"] = [f"{points}", f"{purpose}"]
 
+        #Saving data
         with open("data.json", "w") as file:
             json.dump(data, file, indent =4)
 

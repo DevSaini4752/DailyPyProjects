@@ -1,5 +1,5 @@
 {
-    "total_points": 100,
+    "total_points": 0,
     "PoiHis": {
         "TimeDate": [
             "Change",
@@ -10,15 +10,5 @@
         "Task description",
         "Deadline(in epoch)",
         "Time of saving in epoch"
-    ],
-    "Chy": [
-        "Complete the question answers of the first chapter",
-        1747617692.139394,
-        1747606892.1394117
-    ],
-    "Doggo": [
-        "Food",
-        1747617692.1702652,
-        1747606892.1702678
     ]
 }

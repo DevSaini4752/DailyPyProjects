@@ -7,11 +7,11 @@ import json
 import colours as c
 import time
 import pointmanager
+import resetdata
 
 # Function
 # mtd -> Manage task and data
 def mtd(hours=True, **tasks):
-    data = {}
     try:
         with open("data.json", "r") as file_op:
             data = json.load(file_op)
@@ -19,9 +19,20 @@ def mtd(hours=True, **tasks):
     # Just to don't raise error during an empty file,
     # The file would be created if not there in next step
     except json.JSONDecodeError:
-        pass
+        resetdata.reset()
+
+        #Re-executing the task after reset to give vars to execute further proceedings
+
+        with open("data.json", "r") as file_op:
+            data = json.load(file_op)
+
     except FileNotFoundError:
-        pass
+        resetdata.reset()
+
+        #Re-executing the task after reset to give vars to execute further proceedings
+
+        with open("data.json", "r") as file_op:
+            data = json.load(file_op)
 
     #Keeping this out of the first try part because if
     # an exception is there in try  then it would  end
@@ -42,14 +53,21 @@ def mtd(hours=True, **tasks):
             data[tskkey] = tskval.append(time.time())
             data[tskkey] = tskval
 
-            pointmanager.point_manger(2, "Initializing")
-
+    #If sys don't gets the deadline
     except IndexError as IE:
         msg = f"{c.red}{IE} - Kindly enter Deadline also in Hrs or Days, System failed to got the Deadline!!!{c.end}"
         return print(msg)
 
+    #Updating the data
     with open("data.json", "w") as file_wr:
         json.dump(data, file_wr, indent=4)
 
+    #Adding the points
+    for _ in range(len(tasks)):
+        func = (pointmanager.point_manger(2, "Initializing"))
+        if not func is None:
+            print(func)
+
+#Trial
 if __name__ == "__main__":
     mtd(**{"Chy":["Complete the question answers of the first chapter", 3], "Doggo":["Food", "3"]})

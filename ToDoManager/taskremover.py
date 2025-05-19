@@ -15,17 +15,25 @@ def tskrem(*tasks):
             data = json.load(file_in)
             # Will remove the task given
             for task in tasks:
+                poihis = data["PoiHis"]
 
                 # Updating points
                 timeoftask = (data[task])[2]
                 if (time.time() - timeoftask) > 120:
-                    pointmanager.point_manger(-6, "Cancellation")
+                    data["total_points"] -= 6
+                    print(f"""{c.red}6 points has been deducted for not completing the task, and 
+withdrawing from your commitment after 2 mins{c.end}""")
+
+                    #Updating history
+                    poihis[f"{datetime.datetime.now()}"] = [-6, "Canceled in less then 2 mins"]
+
                 else:
-                    print(f"{c.red}No points deducted as you deleted the task in less then 2 mins{c.end}")
+                    print(f"""{c.red}No points deducted as you deleted the task in less then 2 mins, 
+but the 2 points which you got for making a task is taken back{c.end}""")
+                    data["total_points"] -= 2
 
                     # Updating history
-                    poihis = data["PoiHis"]
-                    poihis[f"{datetime.datetime.now()}"] = [0, "Canceled in less then 2 mins"]
+                    poihis[f"{datetime.datetime.now()}"] = [-2, "Canceled in less then 2 mins"]
 
                 # Deleting the task
                 del data[task]
@@ -49,4 +57,4 @@ def tskrem(*tasks):
         print(msg)
 
 if __name__ == "__main__":
-    tskrem("Chy", "Doggo")
+    tskrem("Doggo")

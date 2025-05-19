@@ -17,14 +17,17 @@ def initializer():
         with open("data.json", "r") as file:
             data = json.load(file)
 
+        #This will not allow the system to edit important data
         for key in data.keys():
             if key == "total_points" or key == "PoiHis" or key == "Task Name":
                 pass
 
             else:
+                #Deadline time will be stored in var
                 value = data[key]
                 value = value[1]
 
+                #Checking whether deadline of any task is crossed or not
                 if value < time.time():
                     pointmanager.point_manger(-6, "Crossing the Deadline")
                     taskremover.tskrem(key)
