@@ -11,6 +11,7 @@ import time
 import sys
 import resetdata
 import report
+import completetsk
 from randomcol import col
 
 
@@ -30,10 +31,11 @@ def main():
 Hello!!! User, I hope that you are doing well...
 Well!!! What do you want to do ?
 a. Add Task
-b. Remove Task
-c. See report
-d. Exit
-e. Reset
+b. Completed Task
+c. Remove Task
+d. See report
+e. Exit
+f. Reset
 
 Kindly choose (a/b/c/d) : {c.end}""").lower()
 
@@ -58,7 +60,6 @@ Kindly choose (a/b/c/d) : {c.end}""").lower()
                     if not (deadline == "" or task_name == "" or description == ""):
                         taskdatamanager.mtd(**{task_name : [description, deadline]})
                         print(f"{col()}Task added successfully !!!{c.end}")
-                        anima_ToDo.praise()
                         break
                     else:
                         print()
@@ -73,7 +74,6 @@ Kindly choose (a/b/c/d) : {c.end}""").lower()
                     if not (deadline == "" or task_name == "" or description == ""):
                         taskdatamanager.mtd(hours=False, **{task_name : [description, deadline]})
                         print(f"{col()}Task added successfully !!!{c.end}")
-                        anima_ToDo.praise()
                         break
 
                     else:
@@ -87,20 +87,24 @@ Kindly choose (a/b/c/d) : {c.end}""").lower()
                     print()
 
         elif user == "b":
+            tsk = input(f"{col()}Which task have you completed : ").lower()
+            completetsk.complete(tsk)
+
+        elif user == "c":
             task = input(f"{c.red}Which task do you want to remove : {c.end}").lower()
             taskremover.tskrem(task)
 
-        elif user == "c":
+        elif user == "d":
             print(report.report())
             print()
 
 
-        elif user == "d":
+        elif user == "e":
             col()
             anima_ToDo.outro()
             sys.exit()
 
-        elif user == "e":
+        elif user == "f":
 
             yon = input(f"""{c.red}This will remove all of the data of you, and the step can't be reversed!!"
 Are you sure (Y/n) !? : """).lower()
